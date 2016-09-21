@@ -4,7 +4,8 @@ module TimeSeriesQueries
 
 using TimeSeries
 
-export @select
+export @select, @s,
+       parseit
 
 include("api.jl")
 
