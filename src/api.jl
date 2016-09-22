@@ -1,3 +1,14 @@
+macro f(ex, y, zee)
+    global val = esc(:($ex))
+    #tme = esc(:($y($ex))) ### works
+    println("foobarbaz")
+    global tme = esc(:($y($val)))
+    println("foobarbaz")
+    return bing = esc(:($zee($y($ex))))
+    println("foobarbaz")
+    bing
+end
+
 macro s(ta::Symbol)
 #    esc(ta)
 
@@ -27,29 +38,21 @@ macro select(ex1::Expr, sym1::Symbol, ex2::Expr, sym2::Symbol, ex3::Expr)
 ####################        error("check the syntax or order of filter statements")
 ####################    end
 
-#    quote
-#        data_sym  = parseit($ex1.args)
-        data_sym  = parseit(ex1.args)
-       # where_sym = ex2.args
-#        where_sym = $ex2.args
-       # when_sym  = ex3.args
-#        when_sym  = $ex3.args
-       # sym       = last(data_sym)
-        sym       = last(data_sym)
-        #data = esc(last(data_sym))
+    tme = esc(:($y($val)))
 
-#    cols = esc(last(data_sym)).colnames
 
-        #return esc(data.colnames)
-        #return esc(data)
-        #return data
-        #return eval(data)["Open"]
+    data_sym  = parseit(ex1.args)
+    where_sym = ex2.args
+    when_sym  = ex3.args
+    sym       = last(data_sym)
 
-   ############   return esc(:($sym.colnames)) # WORKS!
-  ###############   return esc(:($sym["Open"])) # WORKS!
-  foo = rename(esc(:($sym)),["foo"])# WORKS!
-  return esc(foo)# WORKS!
 
+
+    ############   return esc(:($sym.colnames)) # WORKS!
+    ###############   return esc(:($sym["Open"])) # WORKS!
+    #local foo = rename(sym, ["foo", "bar", "baz", "qux", "bing"])# WORKS!
+    #foo
+end
 #    end
  
 #####      # lower case the column names
@@ -89,7 +92,6 @@ macro select(ex1::Expr, sym1::Symbol, ex2::Expr, sym2::Symbol, ex3::Expr)
 # #     return cols[1]() .> cols[2]()
 # 
 # #end
-end
 
 #@select Open, High, Low in cl
 

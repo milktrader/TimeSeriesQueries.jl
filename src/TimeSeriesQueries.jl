@@ -4,9 +4,11 @@ module TimeSeriesQueries
 
 using TimeSeries
 
-export @select, @s,
-       parseit
+export @select, @s, @f,
+       parseit,
+       chain, gen_op
 
 include("api.jl")
+include("meta_utilities.jl")
 
 end
