@@ -4,7 +4,7 @@ module TimeSeriesQueries
 
 using TimeSeries
 
-export @select, @s, @f,
+export @select, @s, @f, @bit,
        parseit,
        chain, gen_op
 

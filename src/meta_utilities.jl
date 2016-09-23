@@ -16,3 +16,6 @@ function gen_op(ta::TimeArray)
         end
     end
 end
+
+function gen_op(ex::Expr)
+end

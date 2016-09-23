@@ -1,3 +1,15 @@
+macro bit(s1::Symbol, s2::Symbol, ex::Expr)
+    # this allows column names to be expressed in the query
+    #gen_op(eval(s1))
+    gen_op(esc(:($s1)))
+    # a check of comparison is another columne or an Int/Float
+    typeof(eval(ex.args[3])) == Int || typeof(eval(ex.args[3])) == Float ?
+    print("foo") :
+    #chain(ex.args[1], Expr(:call, ex.args[2], s1), ex.args[3]) :
+    print("foo")
+    #chain((ex.args[1], Expr(:call, ex.args[2], s1), Expr(:call, ex.args[3], s1)))
+end
+
 macro f(ex, y, zee)
     global val = esc(:($ex))
     #tme = esc(:($y($ex))) ### works
