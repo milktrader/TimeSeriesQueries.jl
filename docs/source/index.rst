@@ -11,9 +11,3 @@ Contents
 
    getting_started
    select
-   let
-   where
-   when
-   collect
-   sample_queries
-   
